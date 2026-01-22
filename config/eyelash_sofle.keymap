@@ -48,8 +48,18 @@
         tap-ms = <100>;
     };
 
-    behaviors {
+behaviors {
+        mmv_slow: mmv_slow {
+            compatible = "zmk,behavior-mouse-move";
+            move-val = <300>;
+            time-to-max-speed-ms = <500>;
+            acceleration-exponent = <1>;
+            trigger-period-ms = <16>;
+        };
     };
+
+    # behaviors {
+    # };
 
     combos {
         compatible = "zmk,combos";
