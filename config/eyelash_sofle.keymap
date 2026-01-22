@@ -26,13 +26,13 @@
     trigger-period-ms = <16>;
 };
 
-
 &soft_off { hold-time-ms = <2000>; };
 
 / {
     behaviors {
         mmv_slow: mmv_slow {
             compatible = "zmk,behavior-mouse-move";
+            #binding-cells = <1>;  // ДОБАВЬТЕ ЭТУ СТРОКУ!
             move-val = <300>;
             time-to-max-speed-ms = <500>;
             acceleration-exponent = <1>;
@@ -111,7 +111,7 @@
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5  &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5   &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
             >;
@@ -144,17 +144,16 @@
             sensor-bindings = <&scroll_encoder>;
         };
 
-layer_5 {
-    bindings = <
+        layer_5 {
+            bindings = <
 &trans  &trans               &trans               &trans               &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans               &mmv_slow MOVE_UP    &trans               &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &mmv_slow MOVE_LEFT  &mmv_slow MOVE_DOWN  &mmv_slow MOVE_RIGHT &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
 &trans  &trans               &trans               &trans               &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans               &trans               &trans               &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
-    >;
+            >;
 
-    sensor-bindings = <&scroll_encoder>;
-};
-
+            sensor-bindings = <&scroll_encoder>;
+        };
     };
 };
