@@ -29,34 +29,30 @@
 &soft_off { hold-time-ms = <2000>; };
 
 / {
-    behaviors {
-        mmv_slow: mmv_slow {
-            compatible = "zmk,behavior-mouse-move";
-            #binding-cells = <1>;  // ДОБАВЬТЕ ЭТУ СТРОКУ!
-            move-val = <300>;
-            time-to-max-speed-ms = <500>;
-            acceleration-exponent = <1>;
-            trigger-period-ms = <16>;
-        };
-    };
-
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
         tap-ms = <100>;
+    };
+
+    behaviors {
     };
 
     combos {
         compatible = "zmk,combos";
+
         softoff {
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
         };
+
         printScreen {
             bindings = <&kp PRINTSCREEN>;
             key-positions = <24 25>;
         };
+
         tilde {
             bindings = <&kp TILDE>;
             key-positions = <0 1>;
@@ -75,6 +71,8 @@
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&kp LEFT_SHIFT &mkp MB3>;
+
+            label = "SHIFT_MCLK";
         };
     };
 
@@ -111,7 +109,7 @@
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5   &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
             >;
@@ -141,18 +139,6 @@
             >;
 
             display-name = "layer1";
-            sensor-bindings = <&scroll_encoder>;
-        };
-
-        layer_5 {
-            bindings = <
-&trans  &trans               &trans               &trans               &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &trans               &mmv_slow MOVE_UP    &trans               &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv_slow MOVE_LEFT  &mmv_slow MOVE_DOWN  &mmv_slow MOVE_RIGHT &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
-&trans  &trans               &trans               &trans               &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &trans               &trans               &trans               &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
-            >;
-
             sensor-bindings = <&scroll_encoder>;
         };
     };
