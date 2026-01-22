@@ -26,16 +26,6 @@
     trigger-period-ms = <16>;
 };
 
-&mmv_slow {
-    compatible = "zmk,behavior-mouse-move";
-    time-to-max-speed-ms = <500>;
-    acceleration-exponent = <1>;
-    trigger-period-ms = <16>;
-    move-val = <300>;   // << МЕДЛЕННАЯ скорость
-};
-
-
-
 
 &soft_off { hold-time-ms = <2000>; };
 
