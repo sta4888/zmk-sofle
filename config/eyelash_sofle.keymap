@@ -40,15 +40,7 @@
 &soft_off { hold-time-ms = <2000>; };
 
 / {
-    scroll_encoder: scroll_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-        tap-ms = <100>;
-    };
-
-behaviors {
+    behaviors {
         mmv_slow: mmv_slow {
             compatible = "zmk,behavior-mouse-move";
             move-val = <300>;
@@ -58,22 +50,23 @@ behaviors {
         };
     };
 
-    # behaviors {
-    # };
+    scroll_encoder: scroll_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+        tap-ms = <100>;
+    };
 
     combos {
         compatible = "zmk,combos";
-
         softoff {
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
         };
-
         printScreen {
             bindings = <&kp PRINTSCREEN>;
             key-positions = <24 25>;
         };
-
         tilde {
             bindings = <&kp TILDE>;
             key-positions = <0 1>;
@@ -92,8 +85,6 @@ behaviors {
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&kp LEFT_SHIFT &mkp MB3>;
-
-            label = "SHIFT_MCLK";
         };
     };
 
