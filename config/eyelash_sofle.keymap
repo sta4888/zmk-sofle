@@ -41,11 +41,13 @@
 
     behaviors {
         slow_mouse: slow_mouse {
-            compatible = "zmk,behavior-pointing-move"; // Изменили тут
+            compatible = "zmk,behavior-pointing-move-input";
             label = "SLOW_MOUSE";
-            #binding-cells = <1>; 
-            time-to-max-speed-ms = <1200>; 
-            acceleration-exponent = <0>; 
+            #binding-cells = <1>;
+            x-input-code = <INPUT_REL_X>;
+            y-input-code = <INPUT_REL_Y>;
+            time-to-max-speed-ms = <1200>;
+            acceleration-exponent = <0>;
         };
     };
 
@@ -157,7 +159,7 @@
 &trans  &trans  &slow_mouse MOVE_UP  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &slow_mouse MOVE_LEFT       &slow_mouse MOVE_DOWN &slow_mouse MOVE_RIGHT  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  
+&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  
             >;
         };
     };
