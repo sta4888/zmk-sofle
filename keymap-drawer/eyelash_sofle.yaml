@@ -2,13 +2,13 @@ layout: {zmk_keyboard: eyelash_sofle}
 layers:
   LAYER0:
   - $$mdi:keyboard-esc$$
-  - {t: '1', s: '!'}
-  - {t: '2', s: '@'}
-  - {t: '3', s: '#'}
-  - {t: '4', s: $}
-  - {t: '5', s: '%'}
+  - '&td_1_plus'
+  - '&td_2_minus'
+  - '&td_3_hash'
+  - '&td_4_at'
+  - '&td_5_amp'
   - $$mdi:arrow-up-bold$$
-  - {t: '6', s: ^}
+  - '&td_6_caret'
   - {t: '7', s: '&'}
   - {t: '8', s: '*'}
   - {t: '9', s: (}
