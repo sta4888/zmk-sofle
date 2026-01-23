@@ -158,7 +158,7 @@
 &trans  &trans  &slow_mouse MOVE_UP  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &slow_mouse MOVE_LEFT       &slow_mouse MOVE_DOWN &slow_mouse MOVE_RIGHT  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  
             >;
         };
     };
