@@ -37,14 +37,17 @@
         tap-ms = <100>;
     };
 
-    slow_mouse: mouse_move_slow {
-    compatible = "zmk,behavior-mouse-move";
-    #binding-cells = <1>; // Это позволяет писать &slow_mouse MOVE_UP
-    time-to-max-speed-ms = <1200>; 
-    acceleration-exponent = <0>; 
-};
+    
 
     behaviors {
+        // ПЕРЕНЕСИТЕ СЮДА
+        slow_mouse: slow_mouse {
+            compatible = "zmk,behavior-mouse-move";
+            label = "SLOW_MOUSE";      // Добавьте лейбл
+            #binding-cells = <1>; 
+            time-to-max-speed-ms = <1200>; 
+            acceleration-exponent = <0>; 
+        };
     };
 
     combos {
