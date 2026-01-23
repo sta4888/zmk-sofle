@@ -33,18 +33,15 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
         tap-ms = <100>;
     };
 
-{
     mmv_slow: mmv_slow {
         compatible = "zmk,behavior-mouse-move";
         time-to-max-speed-ms = <1200>;
         acceleration-exponent = <0>;
         trigger-period-ms = <16>;
     };
-};
 
     behaviors {
     };
