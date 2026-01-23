@@ -38,11 +38,11 @@
     };
 
     slow_mouse: mouse_move_slow {
-        compatible = "zmk,behavior-mouse-move";
-        #binding-cells = <1>;
-        time-to-max-speed-ms = <1500>; // Будет разгоняться очень долго
-        acceleration-exponent = <0>;    // Линейная низкая скорость
-    };
+    compatible = "zmk,behavior-mouse-move";
+    #binding-cells = <1>; // Это позволяет писать &slow_mouse MOVE_UP
+    time-to-max-speed-ms = <1200>; 
+    acceleration-exponent = <0>; 
+};
 
     behaviors {
     };
@@ -116,7 +116,7 @@
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans       &trans  &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans       &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &slow_mouse  &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans       &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans       &trans
             >;
@@ -152,8 +152,8 @@
         layer_5 {
             bindings = <
 &trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &mmv MOVE_UP  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &slow_mouse MOVE_UP  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &slow_mouse MOVE_LEFT       &slow_mouse MOVE_DOWN &slow_mouse MOVE_RIGHT  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
