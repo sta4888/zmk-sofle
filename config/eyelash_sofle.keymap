@@ -10,9 +10,27 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+&mmv_input_listener { 
+    input-processors = <&zip_xy_scaler 2 1 &dynamic_pointer_transform>; 
+};
+
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
+
+&dynamic_pointer_transform {
+    compatible = "zmk,pointer-transform";
+    input-type = <INPUT_EV_REL>;   // Для относительных устройств
+    factor = <1200>;               // начальное значение
+};
+
+&behaviors {
+    toggle_speed: toggle_speed {
+        compatible = "zmk,behavior-macro";
+        label = "TOGGLE_SPEED";
+        bindings = <&dynamic_pointer_transform 1200 600>;
+    };
+};
+
 
 &msc {
     acceleration-exponent = <1>;      // 0
@@ -38,6 +56,10 @@
     };
 
     behaviors {
+switch_speed: switch_speed {
+        compatible = "zmk,behavior-macro";
+        label = "SWITCH_SPEED";
+    };
     };
 
     combos {
@@ -60,6 +82,14 @@
     };
 
     macros {
+
+TOGGLE_CURSOR_SPEED: TOGGLE_CURSOR_SPEED {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&switch_speed>; // это поведение мы создадим ниже
+        label = "TOGGLE_CURSOR_SPEED";
+    };
+
         SHIFT_MCLK: SHIFT_MCLK {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -109,7 +139,7 @@
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &toggle_speed  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
             >;
