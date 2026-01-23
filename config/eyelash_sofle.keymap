@@ -10,7 +10,22 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+/* Настройка слушателя для мыши */
+&mmv_input_listener {
+    input-processors = <&zip_xy_scaler 1 1>; // Скорость по умолчанию
+};
+
+/* Настройка для снайперского режима на слое 5 */
+&mmv_input_listener {
+    input-processors = <&zip_xy_scaler 1 1>;
+
+    /* Если слой 5 активен, делим скорость на 4 */
+    /* Важно: индекс слоя 5 должен соответствовать вашему layer_5 */
+    sniper_mode {
+        layers = <5>;
+        input-processors = <&zip_xy_scaler 1 4>; 
+    };
+};
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
@@ -154,12 +169,13 @@
         };
 
         layer_5 {
+            display-name = "SNIPER";
             bindings = <
-&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &slow_mouse MOVE_UP  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &slow_mouse MOVE_LEFT       &slow_mouse MOVE_DOWN &slow_mouse MOVE_RIGHT  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  
+&trans  &trans  &trans         &trans         &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &mmv MOVE_UP   &trans         &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &mmv MOVE_LEFT         &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans         &trans         &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans         &trans         &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
