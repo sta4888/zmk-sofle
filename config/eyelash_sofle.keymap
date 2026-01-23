@@ -37,6 +37,15 @@
         tap-ms = <100>;
     };
 
+{
+    mmv_slow: mmv_slow {
+        compatible = "zmk,behavior-mouse-move";
+        time-to-max-speed-ms = <1200>;
+        acceleration-exponent = <0>;
+        trigger-period-ms = <16>;
+    };
+};
+
     behaviors {
     };
 
@@ -109,7 +118,19 @@
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5  &trans  &trans
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
+            >;
+
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+layer_5 {
+            bindings = <
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
+&trans  &trans          &mmv_slow MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
+&trans  &mmv_slow MOVE_LEFT  &mmv_slow MOVE_DOWN  &mmv_slow MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
             >;
