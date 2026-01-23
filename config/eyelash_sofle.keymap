@@ -33,20 +33,32 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
         tap-ms = <100>;
     };
 
-   behaviors {
-    mmv_slow: mmv_slow {
-        compatible = "zmk,behavior-mouse-move";
-        #binding-cells = <1>;
-        time-to-max-speed-ms = <1200>;
-        acceleration-exponent = <0>;
-        trigger-period-ms = <16>;
+    behaviors {
+        slow_mouse_move: mmv_slow {
+            compatible = "zmk,behavior-mouse-move";
+            label = "MMV_SLOW";
+            move-cfg = <200>;  // медленное движение
+        };
+
+        fast_mouse_move: mmv_fast {
+            compatible = "zmk,behavior-mouse-move";
+            label = "MMV_FAST";
+            move-cfg = <1200>; // стандартная/быстрая скорость
+        };
     };
-};
 
-
+    keymap {
+        layer_0 {
+            bindings = <
+                &hold_tap
+                    slow_mouse_move fast_mouse_move
+            >;
+        };
+    };
 
     combos {
         compatible = "zmk,combos";
@@ -117,19 +129,7 @@
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5  &trans  &trans
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
-            >;
-
-            sensor-bindings = <&scroll_encoder>;
-        };
-
-        layer_5 {
-            bindings = <
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &trans          &mmv_slow MOVE_UP    &trans        &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv_slow MOVE_LEFT  &mmv_slow MOVE_DOWN  &mmv_slow MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
             >;
