@@ -36,18 +36,16 @@
         tap-ms = <100>;
     };
 
-   mmv_slow: mmv_slow {
-    compatible = "zmk,behavior-mouse-move";
-    #binding-cells = <2>;   // ← ВАЖНО
-    time-to-max-speed-ms = <1200>;
-    acceleration-exponent = <0>;
-    trigger-period-ms = <16>;
+    behaviors {
+    mmv_slow: mmv_slow {
+        compatible = "zmk,behavior-mouse-move";
+        #binding-cells = <2>;
+        time-to-max-speed-ms = <1200>;
+        acceleration-exponent = <0>;
+        trigger-period-ms = <16>;
+    };
 };
 
-
-
-    behaviors {
-    };
 
     combos {
         compatible = "zmk,combos";
