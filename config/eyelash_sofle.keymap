@@ -10,27 +10,9 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-&mmv_input_listener { 
-    input-processors = <&zip_xy_scaler 2 1 &dynamic_pointer_transform>; 
-};
-
+&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
-
-&dynamic_pointer_transform {
-    compatible = "zmk,pointer-transform";
-    input-type = <INPUT_EV_REL>;   // Для относительных устройств
-    factor = <1200>;               // начальное значение
-};
-
-&behaviors {
-    toggle_speed: toggle_speed {
-        compatible = "zmk,behavior-macro";
-        label = "TOGGLE_SPEED";
-        bindings = <&dynamic_pointer_transform 1200 600>;
-    };
-};
-
 
 &msc {
     acceleration-exponent = <1>;      // 0
@@ -44,6 +26,24 @@
     trigger-period-ms = <16>;
 };
 
+&layer5_pointer {
+    compatible = "zmk,pointer-transform";
+    input-type = <INPUT_EV_REL>;
+    factor = <600>;        /* медленная скорость */
+};
+
+
+&behaviors {
+    toggle_cursor_layer: toggle_cursor_layer {
+        compatible = "zmk,behavior-layer-toggle";
+        label = "TOGGLE_CURSOR_LAYER";
+        #binding-cells = <1>;  /* номер слоя */
+        layer = <5>;            /* переключение на layer5 */
+    };
+};
+
+
+
 &soft_off { hold-time-ms = <2000>; };
 
 / {
@@ -56,10 +56,6 @@
     };
 
     behaviors {
-switch_speed: switch_speed {
-        compatible = "zmk,behavior-macro";
-        label = "SWITCH_SPEED";
-    };
     };
 
     combos {
@@ -82,14 +78,6 @@ switch_speed: switch_speed {
     };
 
     macros {
-
-TOGGLE_CURSOR_SPEED: TOGGLE_CURSOR_SPEED {
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings = <&switch_speed>; // это поведение мы создадим ниже
-        label = "TOGGLE_CURSOR_SPEED";
-    };
-
         SHIFT_MCLK: SHIFT_MCLK {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -131,7 +119,7 @@ TOGGLE_CURSOR_SPEED: TOGGLE_CURSOR_SPEED {
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans           &mo 2            &kp KP_NUMBER_0  &trans   &trans
             >;
 
-            label = "layer2";
+            label = "layer1";
             sensor-bindings = <&scroll_encoder>;
         };
 
@@ -139,11 +127,11 @@ TOGGLE_CURSOR_SPEED: TOGGLE_CURSOR_SPEED {
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &toggle_speed  &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &toggle_cursor_layer  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
             >;
-
+            label = "layer2";
             sensor-bindings = <&scroll_encoder>;
         };
 
@@ -155,7 +143,7 @@ TOGGLE_CURSOR_SPEED: TOGGLE_CURSOR_SPEED {
 &trans        &sys_reset    &trans        &bootloader   &trans        &trans            &mmv MOVE_RIGHT  &trans     &trans    &sys_reset  &soft_off  &bootloader  &trans
 &msc SCRL_UP  &trans        &trans        &trans        &mo 4         &trans            &mkp LCLK        &trans     &trans    &trans      &trans     &trans
             >;
-
+            label = "layer3";
             sensor-bindings = <&scroll_encoder>;
         };
 
@@ -167,8 +155,20 @@ TOGGLE_CURSOR_SPEED: TOGGLE_CURSOR_SPEED {
 &trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON                   &rgb_ug RGB_EFF                    &rgb_ug RGB_EFR                    &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11  &kp F12           &trans
 &kp C_MUTE  &trans           &trans                           &trans                             &trans                             &trans             &mkp LCLK        &mo 3            &trans           &trans      &trans   &trans
             >;
-
+            label = "layer4";
             display-name = "layer1";
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+layer_5 {
+            bindings = <
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
+&trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &toggle_cursor_layer  &trans  &trans
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
+            >;
+            label = "layer5";
             sensor-bindings = <&scroll_encoder>;
         };
     };
