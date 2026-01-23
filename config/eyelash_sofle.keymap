@@ -39,12 +39,13 @@
    behaviors {
     mmv_slow: mmv_slow {
         compatible = "zmk,behavior-mouse-move";
-        #binding-cells = <2>;
+        #binding-cells = <1>;
         time-to-max-speed-ms = <1200>;
         acceleration-exponent = <0>;
         trigger-period-ms = <16>;
     };
 };
+
 
 
     combos {
