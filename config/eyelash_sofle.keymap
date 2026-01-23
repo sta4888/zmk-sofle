@@ -40,10 +40,9 @@
     
 
     behaviors {
-        // ПЕРЕНЕСИТЕ СЮДА
         slow_mouse: slow_mouse {
-            compatible = "zmk,behavior-mouse-move";
-            label = "SLOW_MOUSE";      // Добавьте лейбл
+            compatible = "zmk,behavior-pointing-move"; // Изменили тут
+            label = "SLOW_MOUSE";
             #binding-cells = <1>; 
             time-to-max-speed-ms = <1200>; 
             acceleration-exponent = <0>; 
