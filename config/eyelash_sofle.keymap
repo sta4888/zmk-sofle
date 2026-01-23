@@ -36,7 +36,7 @@
         tap-ms = <100>;
     };
 
-    behaviors {
+   behaviors {
     mmv_slow: mmv_slow {
         compatible = "zmk,behavior-mouse-move";
         #binding-cells = <2>;
