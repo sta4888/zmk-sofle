@@ -38,16 +38,31 @@
     };
 
     behaviors {
-        slow_mouse_move: mmv_slow {
+        
+        mmv_fast: mmv_fast {
             compatible = "zmk,behavior-mouse-move";
-            label = "MMV_SLOW";
-            move-cfg = <200>;  // медленное движение
+            #binding-cells = <2>;
+            time-to-max-speed-ms = <200>;     // Быстрее
+            acceleration-exponent = <1>;       // С ускорением
+            trigger-period-ms = <8>;          // Чаще обновление
         };
-
-        fast_mouse_move: mmv_fast {
+        
+        
+        mmv_slow: mmv_slow {
             compatible = "zmk,behavior-mouse-move";
-            label = "MMV_FAST";
-            move-cfg = <1200>; // стандартная/быстрая скорость
+            #binding-cells = <2>;
+            time-to-max-speed-ms = <1500>;    // Медленнее
+            acceleration-exponent = <0>;       // Без ускорения (линейно)
+            trigger-period-ms = <20>;         // Реже обновление
+        };
+        
+        
+        mmv_normal: mmv_normal {
+            compatible = "zmk,behavior-mouse-move";
+            #binding-cells = <2>;
+            time-to-max-speed-ms = <500>;
+            acceleration-exponent = <1>;
+            trigger-period-ms = <16>;
         };
     };
 
