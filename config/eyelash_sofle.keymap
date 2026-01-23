@@ -108,17 +108,17 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans           &mo 2            &kp KP_NUMBER_0  &trans   &trans
             >;
 
-            label = "layer2";
+            label = "layer1";
             sensor-bindings = <&scroll_encoder>;
         };
 
         layer_2 {
             bindings = <
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans       &trans  &trans
+&trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans       &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &slow_mouse  &trans  &trans
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans       &trans  &trans
+&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans       &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -145,8 +145,18 @@
 &kp C_MUTE  &trans           &trans                           &trans                             &trans                             &trans             &mkp LCLK        &mo 3            &trans           &trans      &trans   &trans
             >;
 
-            display-name = "layer1";
+            display-name = "layer4";
             sensor-bindings = <&scroll_encoder>;
+        };
+
+        layer_5 {
+            bindings = <
+&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &mmv MOVE_UP  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans        &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
         };
     };
 };
