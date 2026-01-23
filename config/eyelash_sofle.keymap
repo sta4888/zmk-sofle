@@ -64,6 +64,58 @@
             time-to-max-speed-ms = <1200>;
             acceleration-exponent = <0>;
         };
+
+td_1_plus: td_1_plus {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_1_PLUS";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N1>, <&kp PLUS>;
+        };
+
+        // 1 тап: 2, 2 тапа: - (на месте клавиши 2)
+        td_2_minus: td_2_minus {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_2_MINUS";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N2>, <&kp MINUS>;
+        };
+
+        // 1 тап: 3, 2 тапа: # (решетка на цифре 3, как ты просил)
+        td_3_hash: td_3_hash {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_3_HASH";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N3>, <&kp HASH>;
+        };
+
+        // 1 тап: 4, 2 тапа: @ (собачка)
+        td_4_at: td_4_at {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_4_AT";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N4>, <&kp AT>;
+        };
+
+        // Дополнительно: амперсанд и карет (можешь поставить на 5 и 6 или куда удобно)
+        td_5_amp: td_5_amp {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_5_AMP";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N5>, <&kp AMPERSAND>;
+        };
+
+        td_6_caret: td_6_caret {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_6_CARET";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N6>, <&kp CARET>;
+        };
     };
 
     combos {
@@ -107,7 +159,7 @@
 
         layer0 {
             bindings = <
-&kp ESC         &kp N1    &kp N2        &kp N3        &kp N4  &kp N5       &kp UP_ARROW     &kp N6     &kp N7  &kp N8            &kp N9             &kp N0      &kp BACKSPACE
+&kp ESC         &td_1_plus   &td_2_minus   &td_3_hash    &td_4_at     &td_5_amp       &kp UP_ARROW     &td_6_caret     &kp N7  &kp N8            &kp N9             &kp N0      &kp BACKSPACE
 &kp TAB         &kp Q     &kp W         &kp E         &kp R   &kp T        &kp DOWN_ARROW   &kp Y      &kp U   &kp I             &kp O              &kp P       &kp BSLH
 &kp LEFT_SHIFT  &kp A     &kp S         &kp D         &kp F   &kp G        &kp LEFT_ARROW   &kp H      &kp J   &kp K             &kp L              &kp SEMI    &kp APOS
 &kp LCTRL       &kp Z     &kp X         &kp C         &kp V   &kp B        &kp RIGHT_ARROW  &kp N      &kp M   &kp COMMA         &kp DOT            &kp FSLH    &kp ENTER
