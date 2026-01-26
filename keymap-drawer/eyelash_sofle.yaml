@@ -9,7 +9,7 @@ layers:
   - '&td_5_amp'
   - $$mdi:arrow-up-bold$$
   - '&td_6_caret'
-  - {t: '7', s: '&'}
+  - '&tdeq7'
   - {t: '8', s: '*'}
   - {t: '9', s: (}
   - {t: '0', s: )}
