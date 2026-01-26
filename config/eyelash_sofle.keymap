@@ -175,6 +175,14 @@
 
             label = "SHIFT_MCLK";
         };
+
+test_led: test_led {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_OFF &rgb_ug RGB_COLOR_HSB(0,100,50)>; 
+            // В ZMK сложнее зажечь один индекс без спец. модулей, 
+            // поэтому мы будем использовать системный индикатор.
+        };
     };
 
     keymap {
