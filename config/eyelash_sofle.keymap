@@ -132,7 +132,16 @@
             bindings = <&kp BSLH>, <&kp EQUAL>;
         };
 
-// Создаем поведение: при нажатии на Caps Lock отправляем команду и меняем цвет
+        sh_trans: shift_trans {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SHIFT_TRANS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&trans>; // Здесь магия: первое значение — модификатор, второе — прозрачность
+        };
+
+        // Создаем поведение: при нажатии на Caps Lock отправляем команду и меняем цвет
         cp_rgb: caps_lock_rgb {
             compatible = "zmk,behavior-mod-morph";
             label = "CAPS_RGB";
@@ -198,7 +207,7 @@
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5   &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5   &sh_trans LSHIFT 0  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
             >;
