@@ -103,7 +103,7 @@ layers:
   - '&mkp MB3'
   - '&mkp MB2'
   - SNIPER
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '&trans', h: '$$mdi:apple-keyboard-shift$$'}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
