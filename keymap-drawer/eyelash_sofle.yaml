@@ -57,15 +57,15 @@ layers:
   - CLCK
   - $$mdi:apple-keyboard-command$$
   - $$mdi:apple-keyboard-option$$
-  - layer1
+  - layer2
   - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - $$mdi:keyboard-space$$
-  - '2'
+  - '1'
   - {t: '[', s: '{'}
   - {t: ']', s: '}'}
   - $$mdi:backspace-reverse-outline$$
-  '2':
+  '1':
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -130,7 +130,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  layer1:
+  layer2:
   - F1
   - F2
   - F3
