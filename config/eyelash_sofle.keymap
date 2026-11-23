@@ -173,6 +173,11 @@
             bindings = <&kp TILDE>;
             key-positions = <0 1>;
         };
+
+        Grave {
+            bindings = <&kp GRAVE>;
+            key-positions = <13 14>;
+        };
     };
 
     macros {
