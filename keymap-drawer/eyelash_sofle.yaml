@@ -332,3 +332,5 @@ combos:
   k: PRINTSCREEN
 - p: [0, 1]
   k: '~'
+- p: [13, 14]
+  k: {t: '`', s: '~'}
