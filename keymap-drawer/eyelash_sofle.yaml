@@ -261,7 +261,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   layer4:
-  - {t: '`', s: '~'}
+  - {t: '$$mdi:transfer$$', type: trans}
   - F1
   - F2
   - F3
