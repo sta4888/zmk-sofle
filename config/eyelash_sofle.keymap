@@ -138,7 +138,8 @@
             tapping-term-ms = <200>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&trans>;
- // Здесь магия: первое значение — модификатор, второе — прозрачность
+
+            // Здесь магия: первое значение — модификатор, второе — прозрачность
         };
 
         // Создаем поведение: при нажатии на Caps Lock отправляем команду и меняем цвет
@@ -148,7 +149,9 @@
             label = "CAPS_RGB";
             #binding-cells = <0>;
             bindings = <&kp CLCK>, <&rgb_ug RGB_COLOR_HSB(120,100,50)>;
- // Зеленый для теста
+
+            // Зеленый для теста
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
@@ -209,7 +212,7 @@
             bindings = <
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans              &trans
 &trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans              &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 5   &sh_trans LSHIFT 0  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &mo 0   &sh_trans LSHIFT 0  &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans              &trans
 &trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans    &trans    &trans    &trans  &trans
             >;
@@ -219,11 +222,11 @@
 
         layer_1 {
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6    &trans  &kp F7           &kp F8           &kp F9           &kp F10     &kp F11  &kp F12
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &trans      &trans   &kp KP_NUMLOCK
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &trans      &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &trans      &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans           &mo 3            &kp KP_NUMBER_0  &kp KP_DOT  &trans
+&kp F1     &kp F2      &kp F3  &kp F4  &kp F5  &kp F6    &trans  &kp F7           &kp F8           &kp F9           &kp F10     &kp F11  &kp F12
+&kp TILDE  &kp TILDE2  &trans  &trans  &trans  &trans    &trans  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &trans      &trans   &kp KP_NUMLOCK
+&trans     &trans      &trans  &trans  &trans  &trans    &trans  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &trans      &trans   &trans
+&trans     &trans      &trans  &trans  &trans  &trans    &trans  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &trans      &trans   &trans
+&trans     &trans      &trans  &trans  &trans  &trans    &trans  &trans           &mo 3            &kp KP_NUMBER_0  &kp KP_DOT  &trans
             >;
 
             label = "layer1";
@@ -253,17 +256,6 @@
 
             display-name = "layer4";
             sensor-bindings = <&scroll_encoder>;
-        };
-
-        layer_5 {
-            display-name = "SNIPER";
-            bindings = <
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &mmv MOVE_UP    &trans           &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans          &trans           &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
         };
     };
 };
